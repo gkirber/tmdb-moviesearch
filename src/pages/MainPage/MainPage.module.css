@@ -1,0 +1,8 @@
+.root {
+  padding: 1.5rem;
+  max-width: 42rem;
+}
+
+.tokenHint {
+  font-weight: 500;
+}
