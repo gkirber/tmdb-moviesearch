@@ -1,0 +1,37 @@
+.button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  padding: 0;
+
+  background: rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(6px);
+
+  cursor: pointer;
+
+
+  font-size: 16px;
+  line-height: 1;
+
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.active {
+  background: rgba(220, 38, 38, 0.4);
+}
