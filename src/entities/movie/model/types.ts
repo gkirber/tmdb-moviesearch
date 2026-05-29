@@ -84,3 +84,8 @@ export type MovieCreditsResponse = {
   id: number;
   cast: CastItem[];
 };
+
+export type SearchMoviesParams = {
+  query: string;
+  language?: string;
+};

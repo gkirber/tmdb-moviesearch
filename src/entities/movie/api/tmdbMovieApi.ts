@@ -1,7 +1,7 @@
 import type {
   DiscoverParams, MovieCreditsResponse, MovieDetailsResponse,
   MoviesCategoryParams,
-  MoviesListResponse
+  MoviesListResponse, SearchMoviesParams
 } from "../model/types";
 import {baseApi} from "@/shared/api/tmdb/baseApi.ts";
 import {
@@ -71,17 +71,27 @@ export const tmdbMovieApi = baseApi.injectEndpoints({
       transformResponse: (raw: unknown) => zMoviesListResponse.parse(raw),
       providesTags: (_res, _err, { movieId }) => [{ type: "Movies", id: `similar-${movieId}` }],
     }),
-    searchMovies: build.query<MoviesListResponse, { query: string; page?: number; language?: string; include_adult?: boolean; }>({
-      query: ({ query, page = 1, language = "en-US", include_adult = false }) => ({
+    getSearchMovies: build.infiniteQuery<MoviesListResponse, SearchMoviesParams, number>({
+      infiniteQueryOptions: {
+        initialPageParam: 1,
+        getNextPageParam: (lastPage) => {
+          const total = lastPage.total_pages ?? lastPage.page;
+          return lastPage.page < total ? lastPage.page + 1 : undefined;
+        },
+      },
+
+      query: ({ queryArg, pageParam = 1 }) => ({
         url: "/search/movie",
         params: {
-          query,
-          page,
-          language,
-          include_adult,
+          query: queryArg.query,
+          page: pageParam,
+          language: queryArg.language ?? "en-US",
+          include_adult: false,
         },
       }),
+
       transformResponse: (raw: unknown) => zMoviesListResponse.parse(raw),
+
       providesTags: ["Search"],
     }),
     getMovieCredits: build.query<MovieCreditsResponse, { movieId: number; language?: string }>({
@@ -100,6 +110,6 @@ export const tmdbMovieApi = baseApi.injectEndpoints({
   })
 })
 
-export const { useGetCategoryMoviesQuery, useDiscoverMoviesQuery, useGetGenresQuery, useGetMovieDetailsQuery, useGetSimilarMoviesQuery, useSearchMoviesQuery, useGetMovieCreditsQuery} = tmdbMovieApi;
+export const { useGetCategoryMoviesQuery, useDiscoverMoviesQuery, useGetGenresQuery, useGetMovieDetailsQuery, useGetSimilarMoviesQuery, useGetMovieCreditsQuery, useGetSearchMoviesInfiniteQuery} = tmdbMovieApi;
 
 export type Category = "popular" | "top_rated" | "upcoming" | "now_playing";
