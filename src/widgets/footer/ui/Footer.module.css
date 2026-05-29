@@ -1,0 +1,15 @@
+.footer {
+  border-top: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 16px;
+
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(15, 23, 42, 0.7);
+}

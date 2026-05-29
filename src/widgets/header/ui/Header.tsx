@@ -1,29 +1,41 @@
 import { NavLink } from "react-router-dom";
-import {routes} from "@/app/providers/router/router.ts";
+import { routes } from "@/app/providers/router/router";
+import styles from "./Header.module.css";
 
 export function Header() {
-  const linkStyle = ({ isActive }: { isActive: boolean }) => ({
-    padding: "8px 10px",
-    textDecoration: "none",
-    borderBottom: isActive ? "2px solid currentColor" : "2px solid transparent",
-  });
-
   return (
-    <header style={{ display: "flex", gap: 16, alignItems: "center", padding: 16 }}>
-      <NavLink to={routes.root()} style={{ fontWeight: 800, textDecoration: "none" }}>
-        TMDB
-      </NavLink>
+    <header className={styles.header}>
+      <div className={styles.container}>
 
-      <nav style={{ display: "flex", gap: 8 }}>
-        <NavLink to={routes.root()} style={linkStyle} end>Main</NavLink>
-        <NavLink to={routes.category("popular")} style={linkStyle}>Category Movies</NavLink>
-        <NavLink to={routes.filtered()} style={linkStyle}>Filtered Movies</NavLink>
-        <NavLink to={routes.search()} style={linkStyle}>Search</NavLink>
-        <NavLink to={routes.favorites()} style={linkStyle}>Favorites</NavLink>
-      </nav>
+        <NavLink to={routes.root()} className={styles.logo}>
+          TMDB
+        </NavLink>
 
-      <div style={{ marginLeft: "auto" }}>
-        <button type="button">Toggle theme</button>
+
+        <nav className={styles.nav}>
+          <NavLink to={routes.root()} end className={styles.link}>
+            Main
+          </NavLink>
+          <NavLink to={routes.category("popular")} className={styles.link}>
+            Category Movies
+          </NavLink>
+          <NavLink to={routes.filtered()} className={styles.link}>
+            Filtered Movies
+          </NavLink>
+          <NavLink to={routes.search()} className={styles.link}>
+            Search
+          </NavLink>
+          <NavLink to={routes.favorites()} className={styles.link}>
+            Favorites
+          </NavLink>
+        </nav>
+
+
+        <div className={styles.actions}>
+          <button type="button" className={styles.themeBtn}>
+            Toggle theme
+          </button>
+        </div>
       </div>
     </header>
   );

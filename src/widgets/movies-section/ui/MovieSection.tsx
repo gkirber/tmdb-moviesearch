@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./MovieSection.module.css";
-import type { MovieListItem } from "@/entities/movie/model/types";
-import type { Category } from "@/entities/movie/api/tmdbMovieApi";
+import type { MovieListItem } from "@/entities/movie/model/types.ts";
+import type { Category } from "@/entities/movie/api/tmdbMovieApi.ts";
 import {MovieCard} from "@/entities/movie/ui/MovieCard/MovieCard.tsx";
 
 
