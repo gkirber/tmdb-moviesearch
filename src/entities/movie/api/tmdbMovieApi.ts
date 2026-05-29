@@ -1,11 +1,14 @@
-import type {MoviesCategoryParams} from "../model/types";
+import type { MoviesCategoryParams, MoviesListResponse } from "../model/types";
 import {baseApi} from "@/shared/api/tmdb/baseApi.ts";
 
 
 export const tmdbMovieApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    getCategoryMovies: build.query({
-      query: ({ category, params }: { category: Category; params: MoviesCategoryParams }) => {
+    getCategoryMovies: build.query<
+      MoviesListResponse,
+      { category: Category; params: MoviesCategoryParams }
+    >({
+      query: ({ category, params }) => {
         return {
           method: "get",
           url: `movie/${category}`,
