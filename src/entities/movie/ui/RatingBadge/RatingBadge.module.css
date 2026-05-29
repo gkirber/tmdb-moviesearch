@@ -1,0 +1,40 @@
+.badge {
+  min-width: 25px;
+  height: 25px;
+
+  padding: 0 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+
+  color: white;
+
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.6);
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.35);
+
+  pointer-events: none;
+}
+
+
+.low {
+  background: linear-gradient(135deg, #d9534f, #b52b27);
+}
+
+
+.medium {
+  background: linear-gradient(135deg, #f0ad4e, #d58512);
+}
+
+.high {
+  background: linear-gradient(135deg, #5cb85c, #2e8b57);
+}
