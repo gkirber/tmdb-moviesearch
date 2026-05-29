@@ -1,0 +1,36 @@
+.sort-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.sort-label {
+  font-size: 12px;
+  font-weight: 800;
+  opacity: 0.8;
+}
+
+.select {
+  width: 100%;
+  padding: 10px 12px;
+
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  background: transparent;
+
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+  border-color: rgba(0, 0, 0, 0.35);
+}
+
+.options {
+  font-weight: 700;
+}

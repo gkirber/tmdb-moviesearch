@@ -1,10 +1,22 @@
-import { useMemo } from 'react'
+import { useState } from 'react'
 import { useCategoryMovies } from '@/shared/api/hooks/useCategoryMovies'
 import { MovieSection } from '@/entities/movie/ui/MovieSection/MovieSection.tsx'
 import { MainHero } from '@/widgets/main-hero/ui/MainHero.tsx'
 import { getImageUrl } from '@/entities/movie/lib/imageUrl.ts'
+import type { MovieListItem } from '@/entities/movie/model/types'
 
-type HeroMovie = { id: number; backdrop_path?: string | null }
+const pickRandomMovie = (movies: MovieListItem[]) =>
+	movies[Math.floor(Math.random() * movies.length)]
+
+function HeroWithRandomBackdrop({ movies }: { movies: MovieListItem[] }) {
+	const [movie] = useState(() => pickRandomMovie(movies))
+
+	const backdropUrl = movie.backdrop_path
+		? getImageUrl(movie.backdrop_path, 'w780')
+		: undefined
+
+	return <MainHero backdropUrl={backdropUrl} />
+}
 
 export function MainPage() {
 	const { data: popularData, isLoading: popularLoading } = useCategoryMovies(
@@ -48,32 +60,18 @@ export function MainPage() {
 	const isSectionLoading =
 		popularLoading || topRatedLoading || nowPlayingLoading || upcomingLoading
 
-	const heroMovie = useMemo(() => {
-		const results = popularData?.results as HeroMovie[] | undefined
-		if (!results?.length) return undefined
-
-		const withBackdrop = results.filter(movie => movie.backdrop_path)
-		const pool = withBackdrop.length > 0 ? withBackdrop : results
-		const index =
-			pool.reduce((sum, movie) => sum + movie.id, 0) % pool.length
-
-		return pool[index]
-	}, [popularData?.results])
-
-	const backdropUrl = heroMovie?.backdrop_path
-		? getImageUrl(heroMovie.backdrop_path, 'w780')
-		: undefined
+	const popularMovies = popularData?.results
 
 	return (
 		<>
-			<MainHero backdropUrl={backdropUrl} />
+			{popularMovies?.length ? (
+				<HeroWithRandomBackdrop movies={popularMovies} />
+			) : (
+				<MainHero />
+			)}
 			<section>
 				{isSectionLoading
-					? // 🔹 ВАРИАНТ 1 — пока без skeleton, просто пусто
-						// <p>Loading...</p>
-
-						// 🔹 ВАРИАНТ 2 — если есть MoviesSectionSkeleton (рекомендую позже)
-						sections.map(section => (
+					? sections.map(section => (
 							<div key={section.category} style={{ marginBottom: '32px' }}>
 								<p style={{ opacity: 0.5 }}>{section.title}</p>
 							</div>

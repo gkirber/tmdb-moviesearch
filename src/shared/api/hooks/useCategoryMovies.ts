@@ -1,16 +1,10 @@
+import type {MoviesCategoryParams} from "@/entities/movie/model/types.ts";
 import {
-	useGetCategoryMoviesQuery,
-	type Category,
-} from '@/entities/movie/api/tmdbMovieApi.ts'
-import type { MoviesCategoryParams } from '@/entities/movie/model/types.ts'
+  type Category,
+  useGetCategoryMoviesQuery
+} from "@/entities/movie/api/tmdbMovieApi.ts";
 
-export type { Category }
 
-export const useCategoryMovies = (
-	category: Category,
-	params: MoviesCategoryParams = {},
-) =>
-	useGetCategoryMoviesQuery({
-		category,
-		params,
-	})
+export const useCategoryMovies = (category: Category, params: MoviesCategoryParams) => {
+  return useGetCategoryMoviesQuery({ category, params });
+};
