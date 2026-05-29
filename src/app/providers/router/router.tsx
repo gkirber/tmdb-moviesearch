@@ -5,7 +5,10 @@ import {MainPage} from "@/pages/main/ui/MainPage.tsx";
 import {
   CategoryMoviesPage
 } from "@/pages/category-movies/ui/CategoryMoviesPage.tsx";
-import { FilteredMoviesPage } from "@/pages/filtered-movies/ui/FilteredMoviesPage";
+import {
+  FilteredMoviesPage
+} from "@/pages/filtered-movies/ui/FilteredMoviesPage.tsx";
+import { MovieDetailsPage } from "@/pages/movie-details/ui/MovieDetailsPage.tsx";
 
 
 export const router = createBrowserRouter([
@@ -16,6 +19,7 @@ export const router = createBrowserRouter([
       { index: true, element: <MainPage /> },
       { path: routes.category(":category"), element: <CategoryMoviesPage /> },
       { path: routes.filtered(), element: <FilteredMoviesPage /> },
+      { path: routes.movie(":movieId"), element: <MovieDetailsPage /> },
     ],
   },
 ]);

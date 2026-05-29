@@ -7,6 +7,40 @@ export type MovieListItem = {
   release_date: string;
 };
 
+export type MovieDetailsResponse = {
+  id: number;
+  title: string;
+
+  overview: string;
+  tagline?: string;
+
+  poster_path?: string | null;
+  backdrop_path?: string | null;
+
+  release_date: string;
+  runtime?: number | null;
+
+  vote_average: number;
+  vote_count?: number;
+
+  genres: {
+    id: number;
+    name: string;
+  }[];
+
+  production_countries?: {
+    iso_3166_1: string;
+    name: string;
+  }[];
+
+  spoken_languages?: {
+    iso_639_1: string;
+    english_name: string;
+    name: string;
+  }[];
+};
+
+
 export type MoviesListResponse = {
   page: number;
   results: MovieListItem[];
@@ -37,4 +71,16 @@ export type DiscoverParams = {
   "vote_average.gte"?: number;
   "vote_average.lte"?: number;
   with_genres?: string;
+};
+
+export type CastItem = {
+  id: number;
+  name: string;
+  character?: string;
+  profile_path?: string | null;
+};
+
+export type MovieCreditsResponse = {
+  id: number;
+  cast: CastItem[];
 };

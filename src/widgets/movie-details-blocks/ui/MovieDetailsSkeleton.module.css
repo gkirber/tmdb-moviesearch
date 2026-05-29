@@ -1,0 +1,159 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+/* ---------- INFO ---------- */
+
+.info {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+}
+
+.poster {
+  width: 320px;
+  height: 480px;
+  border-radius: 18px;
+  background: #e5e7eb;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.title {
+  width: 60%;
+  height: 40px;
+  border-radius: 10px;
+  background: #e5e7eb;
+}
+
+.sub {
+  width: 40%;
+  height: 18px;
+  border-radius: 8px;
+  background: #e5e7eb;
+}
+
+.overview {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.overview div {
+  width: 100%;
+  height: 14px;
+  border-radius: 6px;
+  background: #e5e7eb;
+}
+
+.genres {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.genre {
+  width: 90px;
+  height: 32px;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.blockTitle {
+  width: 200px;
+  height: 28px;
+  border-radius: 8px;
+  background: #e5e7eb;
+}
+
+.castGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 24px;
+}
+
+.castItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.castPhoto {
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.castName {
+  width: 80%;
+  height: 14px;
+  border-radius: 6px;
+  background: #e5e7eb;
+}
+
+.castRole {
+  width: 60%;
+  height: 12px;
+  border-radius: 6px;
+  background: #e5e7eb;
+}
+
+
+.similarGrid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.similarPoster {
+  width: 100%;
+  height: 300px;
+  border-radius: 18px;
+  background: #e5e7eb;
+}
+
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 980px) {
+  .info {
+    grid-template-columns: 1fr;
+  }
+
+  .poster {
+    width: 260px;
+    height: 390px;
+  }
+
+  .similarGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
