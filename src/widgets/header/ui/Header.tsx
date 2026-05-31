@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { routes } from "@/app/providers/router/router";
+import { routes } from "@/app/providers/router/routes.ts";
 import styles from "./Header.module.css";
 import { selectThemeMode, toggleThemeMode } from "@/app/providers/theme/themeSlice";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";

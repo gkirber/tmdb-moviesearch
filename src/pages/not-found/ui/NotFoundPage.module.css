@@ -1,0 +1,38 @@
+.container {
+  text-align: center;
+  margin: 10% auto;
+}
+
+.image {
+  max-width: 480px;
+  max-height: 450px;
+}
+
+.text {
+  margin: 2rem 0;
+  font-style: italic;
+  letter-spacing: 0.15rem;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #2563eb;
+  opacity: .6;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+
+.link:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.link:active {
+  transform: translateY(0);
+}
