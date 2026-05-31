@@ -6,12 +6,14 @@ import {
   useGetMovieCreditsQuery,
   useGetMovieDetailsQuery,
   useGetSimilarMoviesQuery,
-} from "@/entities/movie/api/tmdbMovieApi.ts";
+} from "@/entities/movie/api/tmdbMovieApi";
 
-import { MovieInfoBlock } from "@/widgets/movie-details-blocks/ui/MovieInfoBlock.tsx";
-import { CastBlock } from "@/widgets/movie-details-blocks/ui/CastBlock.tsx";
-import { SimilarMoviesBlock } from "@/widgets/movie-details-blocks/ui/SimilarMoviesBlock.tsx";
-import { MovieDetailsSkeleton } from "@/widgets/movie-details-blocks/ui/MovieDetailsSkeleton.tsx";
+import { MovieInfoBlock } from "@/widgets/movie-details-blocks/ui/MovieInfoBlock";
+import { CastBlock } from "@/entities/person/ui/CastCard/CastBlock.tsx";
+import { SimilarMoviesBlock } from "@/widgets/movie-details-blocks/ui/SimilarMoviesBlock";
+import {
+  MovieDetailsSkeleton
+} from "@/widgets/movie-details-blocks/ui/MovieDetailsSkeleton.tsx";
 
 
 export function MovieDetailsPage() {
@@ -40,7 +42,7 @@ export function MovieDetailsPage() {
 
   if (skip) {
     return (
-      <div className={styles.page}>
+      <div className={`container ${styles.page}`}>
         <button className={styles.back} type="button" onClick={() => navigate(-1)}>
           ← Back
         </button>
@@ -51,7 +53,7 @@ export function MovieDetailsPage() {
 
   if (error) {
     return (
-      <div className={styles.page}>
+      <div className={`container ${styles.page}`}>
         <button className={styles.back} type="button" onClick={() => navigate(-1)}>
           ← Back
         </button>
@@ -64,8 +66,7 @@ export function MovieDetailsPage() {
   if (loading) return <MovieDetailsSkeleton />
 
   return (
-
-    <div className={styles.page}>
+    <div className={`container ${styles.page}`}>
       <div className={styles.topRow}>
         <button className={styles.back} type="button" onClick={() => navigate(-1)}>
           Back

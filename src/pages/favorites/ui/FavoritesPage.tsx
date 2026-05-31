@@ -14,7 +14,7 @@ export function FavoritesPage() {
   }));
 
   return (
-    <div className={s.page}>
+    <div className={`container ${s.page}`}>
       <h2 className={s.title}>Favorites</h2>
 
       {moviesForCard.length > 0 ? (

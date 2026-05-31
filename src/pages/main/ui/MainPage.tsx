@@ -1,10 +1,34 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useCategoryMovies } from "@/shared/api/hooks/useCategoryMovies";
-import { MovieSection } from "@/widgets/movies-section/ui/MovieSection.tsx";
-import { MoviesSectionSkeleton } from "@/widgets/movies-section/ui/MoviesSectionSkeleton.tsx";
-import { MainHero } from "@/widgets/main-hero/ui/MainHero.tsx";
-import { getImageUrl } from "@/entities/movie/lib/imageUrl.ts";
+import styles from "./MainPage.module.css";
+import {MovieSection} from "@/widgets/movies-section/ui/MovieSection.tsx";
+import {MainHero} from "@/widgets/main-hero/ui/MainHero.tsx";
+import {getImageUrl} from "@/entities/movie/lib/imageUrl.ts";
+import type { MovieListItem } from "@/entities/movie/model/types.ts";
+import {
+  MoviesSectionSkeleton
+} from "@/widgets/movies-section/ui/MoviesSectionSkeleton.tsx";
 
+type MainPageHeroProps = {
+  movies: MovieListItem[];
+};
+
+const pickRandomHeroMovie = (movies: MovieListItem[]) => {
+  const withBackdrop = movies.filter((movie) => movie.backdrop_path);
+  const pool = withBackdrop.length ? withBackdrop : movies;
+  const index = Math.floor(Math.random() * pool.length);
+  return pool[index];
+};
+
+const MainPageHero = ({ movies }: MainPageHeroProps) => {
+  const [heroMovie] = useState(() => pickRandomHeroMovie(movies));
+
+  const backdropUrl = heroMovie.backdrop_path
+    ? getImageUrl(heroMovie.backdrop_path, "w780")
+    : undefined;
+
+  return <MainHero backdropUrl={backdropUrl} />;
+};
 
 export function MainPage() {
   const { data: popularData, isLoading: popularLoading } = useCategoryMovies("popular", { page: 1 });
@@ -25,37 +49,33 @@ export function MainPage() {
     nowPlayingLoading ||
     upcomingLoading;
 
-
-  const heroMovie = useMemo(() => {
-    const results = popularData?.results;
-    if (!results?.length) return undefined;
-
-    const index = results.reduce((acc, movie) => acc + movie.id, 0) % results.length;
-    return results[index];
-  }, [popularData]);
-
-  const backdropUrl = heroMovie?.backdrop_path
-    ? getImageUrl(heroMovie.backdrop_path, "w780")
-    : undefined;
+  const heroMovies = useMemo(
+    () => popularData?.results?.filter((movie) => movie.backdrop_path) ?? [],
+    [popularData?.results],
+  );
 
   return (
     <>
-    <MainHero backdropUrl={backdropUrl} />
-    <section>
-      {isSectionLoading ? (
-
-        <MoviesSectionSkeleton count={4} cardsPerRow={6} />
+      {heroMovies.length > 0 ? (
+        <MainPageHero key={heroMovies.map((movie) => movie.id).join("-")} movies={heroMovies} />
       ) : (
-        sections.map((section) => (
-          <MovieSection
-            key={section.category}
-            title={section.title}
-            movies={section.movies}
-            category={section.category}
-          />
-        ))
+        <MainHero />
       )}
-    </section>
+
+      <section className={`container ${styles.sections}`}>
+        {isSectionLoading ? (
+          <MoviesSectionSkeleton count={4} cardsPerRow={6} />
+        ) : (
+          sections.map((section) => (
+            <MovieSection
+              key={section.category}
+              title={section.title}
+              movies={section.movies}
+              category={section.category}
+            />
+          ))
+        )}
+      </section>
     </>
   );
 }

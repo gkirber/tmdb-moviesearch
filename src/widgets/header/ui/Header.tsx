@@ -1,16 +1,21 @@
 import { NavLink } from "react-router-dom";
 import { routes } from "@/app/providers/router/router";
 import styles from "./Header.module.css";
+import { selectThemeMode, toggleThemeMode } from "@/app/providers/theme/themeSlice";
+import {useAppDispatch} from "@/app/providers/store/hooks.ts";
+import {useAppSelector} from "@/app/providers/store/hooks.ts";
+import logo from "@/assets/vector/logo.svg";
 
 export function Header() {
+  const themeMode = useAppSelector(selectThemeMode);
+  const dispatch = useAppDispatch();
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-
         <NavLink to={routes.root()} className={styles.logo}>
-          TMDB
+          <img src={logo} alt="Logo" className={styles.logoImage} />
         </NavLink>
-
 
         <nav className={styles.nav}>
           <NavLink to={routes.root()} end className={styles.link}>
@@ -30,10 +35,15 @@ export function Header() {
           </NavLink>
         </nav>
 
-
         <div className={styles.actions}>
-          <button type="button" className={styles.themeBtn}>
-            Toggle theme
+          <button
+            type="button"
+            className={styles.btnTheme}
+            onClick={() => dispatch(toggleThemeMode())}
+            aria-label="Toggle theme"
+            title="Toggle theme"
+          >
+            {themeMode === "light" ? "🌙" : "☀️"}
           </button>
         </div>
       </div>

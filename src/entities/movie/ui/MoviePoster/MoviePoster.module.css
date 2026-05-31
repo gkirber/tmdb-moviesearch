@@ -5,4 +5,13 @@
   aspect-ratio: 2 / 3;
   display: block;
   border-radius: 12px;
+  color: var(--title-color);
+}
+
+
+
+@media (max-width: 820px) {
+  .poster {
+    height: 300px;
+  }
 }

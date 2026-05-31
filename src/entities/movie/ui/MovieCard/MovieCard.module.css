@@ -10,6 +10,11 @@
   border-radius: 18px;
   overflow: hidden;
   transition: transform 0.2s ease;
+
+
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
 }
 
 .posterWrap:hover {
@@ -57,7 +62,7 @@
   margin: 0;
   font-size: 14px;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--title-color);
 
   overflow: hidden;
   text-overflow: ellipsis;

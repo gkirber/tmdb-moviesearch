@@ -1,6 +1,6 @@
-import { selectFavorites } from "@/features/favorites/model/favoritesSlice";
-import {useAppSelector} from "@/app/providers/store/hooks.ts";
+import { useAppSelector } from '@/app/providers/store/hooks.ts'
+import { selectFavorites } from '@/pages/favorites/model/favoritesSlice'
 
 export function useFavoritesMovies() {
-  return useAppSelector(selectFavorites);
+	return useAppSelector(selectFavorites)
 }

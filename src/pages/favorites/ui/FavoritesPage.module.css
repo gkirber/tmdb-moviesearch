@@ -9,7 +9,7 @@
   margin: 0;
   font-size: 28px;
   font-weight: 900;
-  color: #0f172a;
+  color: var(--title-color);
 }
 
 
@@ -26,10 +26,10 @@
   padding: 18px 16px;
   border-radius: 16px;
 
-  border: 1px dashed rgba(15, 23, 42, 0.18);
-  background: rgba(15, 23, 42, 0.03);
+  border: 1px dashed var(--border);
+  background: var(--btn-bg);
 
-  color: rgba(15, 23, 42, 0.75);
+  color: var(--text-muted);
   font-weight: 700;
 }
 

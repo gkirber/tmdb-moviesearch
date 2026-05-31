@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom'
-import styles from './MovieCard.module.css'
 import type { MovieListItem } from '@/entities/movie/model/types'
 import { MoviePoster } from '@/entities/movie/ui/MoviePoster/MoviePoster'
 import { RatingBadge } from '@/entities/movie/ui/RatingBadge/RatingBadge'
-import { FavoriteButton } from '@/features/favorites/ui/FavoriteButton.tsx'
+import { FavoriteButton } from '@/pages/favorites/ui/FavoriteButton'
+import { useNavigate } from 'react-router-dom'
+import styles from './MovieCard.module.css'
 
 type Props = {
 	movie: MovieListItem

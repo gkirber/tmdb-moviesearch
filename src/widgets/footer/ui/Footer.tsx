@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        © 2026 MovieSearch Demo · Data courtesy of TMDB.
+        <span >© 2026 MovieSearch Demo · Data courtesy of TMDB.</span>
       </div>
     </footer>
   );

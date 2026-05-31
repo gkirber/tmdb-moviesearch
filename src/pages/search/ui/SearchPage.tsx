@@ -52,7 +52,7 @@ export function SearchPage() {
   const noResults = !loading && !skip && movies.length === 0;
 
   return (
-    <div className={styles.page}>
+    <div className={`container ${styles.page}`}>
       <div className={styles.header}>
         <h1 className={styles.title}>Search</h1>
         {loading && <LinearProgress />}

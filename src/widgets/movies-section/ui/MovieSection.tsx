@@ -16,7 +16,7 @@ export function MovieSection({ title, movies, category }: Props) {
 
   return (
     <section className={styles.section}>
-      <header className={styles.header}>
+      <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
 
         <button
@@ -26,7 +26,7 @@ export function MovieSection({ title, movies, category }: Props) {
         >
           View More
         </button>
-      </header>
+      </div>
 
       <div className={styles.grid}>
         {movies.map((movie) => (

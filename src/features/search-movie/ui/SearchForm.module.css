@@ -6,29 +6,41 @@
 
 .input {
   flex: 1;
+  min-width: 250px;
   height: 44px;
   padding: 0 14px;
   border-radius: 12px;
-  border: 1px solid rgba(15, 23, 42, 0.14);
+  border: 1px solid var(--border);
+  background: var(--card-bg);
   outline: none;
   font-size: 14px;
+  color: var(--text);
 }
 
 .input:focus {
-  border-color: rgba(15, 23, 42, 0.35);
+  border-color: var(--text-muted);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
 }
 
 .button {
   height: 44px;
   padding: 0 14px;
   border-radius: 12px;
-  border: 1px solid rgba(15, 23, 42, 0.14);
-  background: #fff;
+  border: 1px solid var(--border);
+  background: var(--btn-bg);
   font-weight: 800;
   cursor: pointer;
+  color: var(--btn-text);
 }
 
 .button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.button:hover {
+  background: var(--btn-bg-hover);
 }

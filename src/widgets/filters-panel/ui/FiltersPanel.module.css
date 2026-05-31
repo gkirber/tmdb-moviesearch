@@ -1,8 +1,8 @@
 .panel {
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--border);
   border-radius: 14px;
   padding: 14px;
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--card-bg);
   backdrop-filter: blur(6px);
 
   position: sticky;
@@ -13,6 +13,7 @@
   margin: 0 0 12px 0;
   font-size: 14px;
   font-weight: 900;
+  color: var(--section-title);
 }
 
 .tags {
@@ -26,11 +27,16 @@
   width: 100%;
   margin-top: 12px;
 
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  background: transparent;
+  border: 1px solid var(--border);
+  background: var(--btn-bg);
   padding: 10px 12px;
   border-radius: 12px;
 
   cursor: pointer;
   font-weight: 800;
+  color: var(--btn-text);
+}
+
+.reset:hover {
+  background: var(--btn-bg-hover);
 }

@@ -1,8 +1,8 @@
 import styles from "./FilteredMoviesPage.module.css";
-import { FiltersPanel } from "@/widgets/filters-panel/ui/FiltersPanel.tsx";
-import { selectFilters } from "@/widgets/filters-panel/model/selectors.ts";
-import { useDiscoverMoviesQuery } from "@/entities/movie/api/tmdbMovieApi.ts";
-import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard.tsx";
+import { FiltersPanel } from "@/widgets/filters-panel/ui/FiltersPanel";
+import { selectFilters } from "@/widgets/filters-panel/model/selectors";
+import { useDiscoverMoviesQuery } from "@/entities/movie/api/tmdbMovieApi";
+import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard";
 import { useAppSelector } from "@/app/providers/store/hooks.ts";
 
 export function FilteredMoviesPage() {
@@ -10,7 +10,7 @@ export function FilteredMoviesPage() {
   const { data, isFetching } = useDiscoverMoviesQuery(filters);
 
   return (
-    <div className={styles.page}>
+    <div className={`container ${styles.page}`}>
       <FiltersPanel />
       <section className={styles.content}>
         {isFetching && <div>Loading...</div>}

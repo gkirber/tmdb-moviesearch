@@ -4,6 +4,12 @@
   gap: 14px;
 }
 
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 .title {
   margin: 0;
   font-size: 22px;
@@ -69,7 +75,6 @@
   font-size: 12px;
 }
 
-/* Skeleton */
 .skeletonCard {
   display: flex;
   flex-direction: column;
