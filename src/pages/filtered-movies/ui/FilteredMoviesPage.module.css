@@ -58,6 +58,10 @@
   gap: 14px;
 }
 
+.loadingBar {
+  width: 100%;
+}
+
 .contentHeader {
   display: flex;
   align-items: baseline;
@@ -88,6 +92,18 @@
   gap: 16px;
 }
 
+.skeletonCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeletonPoster {
+  width: 100%;
+  height: 340px;
+  border-radius: 18px;
+}
+
 @media (max-width: 1280px) {
   .grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -105,5 +121,9 @@
 
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skeletonPoster {
+    height: 300px;
   }
 }

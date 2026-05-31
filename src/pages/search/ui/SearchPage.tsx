@@ -7,7 +7,7 @@ import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard";
 import { useGetSearchMoviesInfiniteQuery } from "@/entities/movie/api/tmdbMovieApi";
 import {
   LinearProgress
-} from "@/shared/api/ui/LinearProgress/LinearProgress.tsx";
+} from "@/shared/ui/LinearProgress/LinearProgress.tsx";
 
 function getQueryFromUrl(sp: URLSearchParams) {
   return (sp.get("query") ?? "").trim();
@@ -56,6 +56,11 @@ export function SearchPage() {
       <div className={styles.header}>
         <h1 className={styles.title}>Search</h1>
         {loading && <LinearProgress />}
+        {isFetchingNextPage && (
+          <div className={styles.loadingBar}>
+            <LinearProgress />
+          </div>
+        )}
       </div>
 
       <SearchForm
@@ -110,14 +115,8 @@ export function SearchPage() {
           </div>
 
           {isFetchingNextPage && (
-            <div className={styles.grid}>
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={`more-${i}`} className={styles.skeletonCard}>
-                  <Skeleton className={styles.skeletonPoster} />
-                  <Skeleton height={16} width="90%" borderRadius={8} />
-                  <Skeleton height={14} width="65%" borderRadius={8} />
-                </div>
-              ))}
+            <div className={styles.loadMoreRow}>
+              <div className={styles.loadingHint}>Loading more…</div>
             </div>
           )}
         </>

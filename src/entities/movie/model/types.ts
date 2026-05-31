@@ -62,8 +62,8 @@ export type SortBy =
   | "vote_average.asc"
   | "primary_release_date.desc"
   | "primary_release_date.asc"
-  | "title.asc"
-  | "title.desc";
+  | "original_title.asc"
+  | "original_title.desc";
 
 export type DiscoverParams = {
   page?: number;

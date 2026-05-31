@@ -1,6 +1,8 @@
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-import { errorToast } from "@/shared/api/ui/ErrorState/errorToast";
-import { isErrorWithProperty } from "@/shared/api/ui/ErrorState/isErrorWithProperty";
+import {errorToast} from "@/shared/ui/ErrorState/errorToast.ts";
+import {
+  isErrorWithProperty
+} from "@/shared/ui/ErrorState/isErrorWithProperty.ts";
 
 export const handleErrors = (error: FetchBaseQueryError) => {
   if (error) {
@@ -26,6 +28,7 @@ export const handleErrors = (error: FetchBaseQueryError) => {
       default:
         if (error.status >= 500 && error.status < 600) {
           errorToast("Server error occurred. Try again later");
+          break;
         }
         errorToast("Some error occurred");
     }

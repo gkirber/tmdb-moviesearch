@@ -1,6 +1,6 @@
 import s from "./FavoritesPage.module.css";
 import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard";
-import { useFavoritesMovies } from "@/shared/api/hooks/useFavoritesMovies";
+import { useFavoritesMovies } from "@/shared/lib/hooks/useFavoritesMovies";
 
 export function FavoritesPage() {
   const favorites = useFavoritesMovies();

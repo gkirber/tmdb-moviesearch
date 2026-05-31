@@ -1,5 +1,5 @@
 import s from "./RatingRange.module.css";
-import { type ChangeEvent, useState } from "react";
+import type { ChangeEvent } from "react";
 
 type Props = {
   minRating: number;
@@ -8,32 +8,27 @@ type Props = {
 };
 
 export const RatingRange = ({ minRating, maxRating, onRatingChange }: Props) => {
-  const [min, setMin] = useState<number>(minRating);
-  const [max, setMax] = useState<number>(maxRating);
-
   const handleMinChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value);
-    const clampedValue = Math.min(value, max - 0.1);
-    setMin(clampedValue);
-    onRatingChange(clampedValue, max);
+    const clampedValue = Math.min(value, maxRating - 0.1);
+    onRatingChange(clampedValue, maxRating);
   };
 
   const handleMaxChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value);
-    const clampedValue = Math.max(value, min + 0.1);
-    setMax(clampedValue);
-    onRatingChange(min, clampedValue);
+    const clampedValue = Math.max(value, minRating + 0.1);
+    onRatingChange(minRating, clampedValue);
   };
 
-  const minPercent = (min / 10) * 100;
-  const maxPercent = (max / 10) * 100;
+  const minPercent = (minRating / 10) * 100;
+  const maxPercent = (maxRating / 10) * 100;
 
   return (
     <div className={s.container}>
       <div className={s["rating-header"]}>
         <span>Rating</span>
         <span>
-          {min.toFixed(1)} - {max.toFixed(1)}
+          {minRating.toFixed(1)} - {maxRating.toFixed(1)}
         </span>
       </div>
       <div className={s["slider-container"]} data-no-global-styles="true">
@@ -45,8 +40,8 @@ export const RatingRange = ({ minRating, maxRating, onRatingChange }: Props) => 
             width: `${maxPercent - minPercent}%`,
           }}
         ></div>
-        <input type="range" min="0" max="10" step="0.1" value={min} onChange={handleMinChange} className={s.slider} />
-        <input type="range" min="0" max="10" step="0.1" value={max} onChange={handleMaxChange} className={s.slider} />
+        <input type="range" min="0" max="10" step="0.1" value={minRating} onChange={handleMinChange} className={s.slider} />
+        <input type="range" min="0" max="10" step="0.1" value={maxRating} onChange={handleMaxChange} className={s.slider} />
       </div>
     </div>
   );

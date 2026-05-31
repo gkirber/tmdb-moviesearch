@@ -1,8 +1,9 @@
 import s from "./GenreMultiSelect.module.css";
 import { useGetGenresQuery } from "@/entities/movie/api/tmdbMovieApi";
-import { selectFilters } from "../model/selectors";
-import { updateFilters } from "../model/filtersSlice";
-import { useAppDispatch, useAppSelector } from "@/app/providers/store/hooks.ts";
+import { selectFilters } from "@/features/filters/model/selectors";
+import { updateFilters } from "@/features/filters/model/filtersSlice";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 
 export function GenreMultiSelect() {
   const { data: list } = useGetGenresQuery();

@@ -1,9 +1,15 @@
 import { useCallback, useEffect, useMemo } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import styles from "./CategoryMoviesPage.module.css";
-import { useCategoryMovies } from "@/shared/api/hooks/useCategoryMovies";
+import { useCategoryMovies } from "@/shared/lib/hooks/useCategoryMovies";
 import type { Category } from "@/entities/movie/api/tmdbMovieApi";
+import type { MovieListItem } from "@/entities/movie/model/types";
 import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard";
+import {
+  LinearProgress
+} from "@/shared/ui/LinearProgress/LinearProgress";
 
 const CATEGORY_TABS: Array<{ value: Category; label: string }> = [
   { value: "popular", label: "Popular" },
@@ -46,19 +52,18 @@ export function CategoryMoviesPage() {
 
   const { data, isLoading, isFetching } = useCategoryMovies(category, { page });
 
+  const movies: MovieListItem[] = data?.results ?? [];
   const totalPages = Math.min(data?.total_pages ?? 1, 500)
   const title = useMemo(() => getCategoryTitle(category), [category]);
 
-  const setPageInUrl = useCallback((nextPage: number) => {
-    setSearchParams(
-      (prev) => {
-        const sp = new URLSearchParams(prev);
-        sp.set("page", String(nextPage));
-        return sp;
-      },
-      { replace: true },
-    );
-  }, [setSearchParams]);
+  const setPageInUrl = useCallback(
+    (nextPage: number) => {
+      const sp = new URLSearchParams(searchParams);
+      sp.set("page", String(nextPage));
+      setSearchParams(sp, { replace: true });
+    },
+    [searchParams, setSearchParams]
+  );
 
   const handleChangeCategory = (next: Category) => {
     navigate(`/category/${next}?page=1`);
@@ -104,13 +109,16 @@ export function CategoryMoviesPage() {
       </div>
 
       <h1 className={styles.title}>{title}</h1>
+      {loading && (
+        <div className={styles.loadingBar}>
+          <LinearProgress />
+        </div>
+      )}
 
-      {loading ? (
-        <div className={styles.loading}>Loading...</div>
-      ) : (
+      {!loading ? (
         <>
           <div className={styles.grid}>
-            {(data?.results ?? []).map((movie) => (
+            {movies.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
           </div>
@@ -139,6 +147,16 @@ export function CategoryMoviesPage() {
             </button>
           </div>
         </>
+      ) : (
+        <div className={styles.grid}>
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} className={styles.skeletonCard}>
+              <Skeleton className={styles.skeletonPoster} />
+              <Skeleton height={16} width="90%" borderRadius={8} />
+              <Skeleton height={14} width="65%" borderRadius={8} />
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

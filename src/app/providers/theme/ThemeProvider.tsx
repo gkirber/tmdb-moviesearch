@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 import { useEffect } from "react";
 import { selectThemeMode } from "./themeSlice";
-import {useAppSelector} from "@/app/providers/store/hooks.ts";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 
 export function ThemeProvider({ children }: PropsWithChildren) {
   const theme = useAppSelector(selectThemeMode);
