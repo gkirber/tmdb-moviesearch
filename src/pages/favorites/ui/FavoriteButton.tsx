@@ -33,7 +33,7 @@ export function FavoriteButton({ movie }: Props) {
       aria-label="Toggle favorite"
       title={isFavorite ? "Remove from favorites" : "Add to favorites"}
     >
-      {isFavorite ? "❤️" : "🤍"}
+      {isFavorite ? "💙" : "🤍"}
     </button>
   )
 }
