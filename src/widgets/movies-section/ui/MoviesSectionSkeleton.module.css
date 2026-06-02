@@ -54,6 +54,7 @@
 .movieTitle {
   width: 90%;
   height: 16px;
+  margin: 0 auto;
   border-radius: 8px;
   background: #e5e7eb;
 }
@@ -61,6 +62,7 @@
 .movieTitleSmall {
   width: 65%;
   height: 14px;
+  margin: 0 auto;
   border-radius: 8px;
   background: #e5e7eb;
 }

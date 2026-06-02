@@ -96,12 +96,14 @@ A modern single-page application for browsing, searching, and filtering movies u
 | Package manager | [pnpm](https://pnpm.io/) |
 | External API | [TMDB API v3](https://developer.themoviedb.org/docs) |
 
-![React](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg)
-![TypeScript](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg)
-![Vite](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg)
-![Redux](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg)
-![React Router](https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactrouter/reactrouter-original.svg)
-![ESLint](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg)
+<p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="40" height="40" alt="React" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="40" height="40" alt="TypeScript" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" width="40" height="40" alt="Vite" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" width="40" height="40" alt="Redux" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactrouter/reactrouter-original.svg" width="40" height="40" alt="React Router" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg" width="40" height="40" alt="ESLint" />
+</p>
 
 ---
 
@@ -215,7 +217,19 @@ Create a `.env` file in the project root:
 
 ## Deployment
 
-Build the app with `pnpm build`. The output is in `dist/`. Serve locally with `pnpm preview`, or deploy the `dist` folder to any static host (Vercel, Netlify, GitHub Pages, etc.). Set `VITE_TMDB_AUTH_TOKEN` in your deployment environment.
+Build the app with `pnpm build`. The output is in `dist/`. Serve locally with `pnpm preview`, or deploy the `dist` folder to any static host.
+
+### Vercel
+
+1. Import the repository on [vercel.com](https://vercel.com) (Vite is detected automatically).
+2. **Required:** open **Project Settings → Environment Variables** and add the TMDB token you received during registration:
+   - **Name:** `VITE_TMDB_AUTH_TOKEN`
+   - **Value:** your TMDB **v4 Read Access Token** (from [API Settings](https://www.themoviedb.org/settings/api))
+   - **Environments:** Production (and Preview if you use PR deployments)
+3. Redeploy after adding the variable — Vite embeds `VITE_*` values at build time, so the app will not call TMDB without it.
+4. The repo includes `vercel.json` with SPA rewrites so client-side routes work on refresh.
+
+> **Note:** `VITE_` variables are included in the client bundle. For a public production app, consider a backend proxy instead of exposing the token.
 
 ---
 
