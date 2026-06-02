@@ -1,19 +1,19 @@
-import styles from "./FilteredMoviesPage.module.css";
-import { FiltersPanel } from "@/features/filters/ui/FiltersPanel";
-import { selectFilters } from "@/features/filters/model/selectors";
-import { useDiscoverMoviesQuery } from "@/entities/movie/api/tmdbMovieApi";
-import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard";
-import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import styles from "./FilteredMoviesPage.module.css"
+import { FiltersPanel } from "@/features/filters/ui/FiltersPanel"
+import { selectFilters } from "@/features/filters/model/selectors"
+import { useDiscoverMoviesQuery } from "@/entities/movie/api/tmdbMovieApi"
+import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard"
+import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts"
+import Skeleton from "react-loading-skeleton"
+import "react-loading-skeleton/dist/skeleton.css"
 import {
   LinearProgress
-} from "@/shared/ui/LinearProgress/LinearProgress";
+} from "@/shared/ui/LinearProgress/LinearProgress"
 
 export function FilteredMoviesPage() {
-  const filters = useAppSelector(selectFilters);
-  const { data, isFetching } = useDiscoverMoviesQuery(filters);
-  const loading = isFetching;
+  const filters = useAppSelector(selectFilters)
+  const { data, isFetching } = useDiscoverMoviesQuery(filters)
+  const loading = isFetching
 
   return (
     <div className={`container ${styles.page}`}>
@@ -43,5 +43,5 @@ export function FilteredMoviesPage() {
         )}
       </section>
     </div>
-  );
+  )
 }

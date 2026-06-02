@@ -5,4 +5,4 @@ export const routes = {
   search: () => "/search",
   favorites: () => "/favorites",
   movie: (movieId: string) => `/movie/${movieId}`,
-} as const;
+} as const

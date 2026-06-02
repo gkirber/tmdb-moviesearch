@@ -1,4 +1,4 @@
-const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p";
+const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p"
 
 type ImageSize =
   | "w92"
@@ -15,5 +15,5 @@ export function getImageUrl(
   path: string,
   size: ImageSize = "w342"
 ): string {
-  return `${TMDB_IMAGE_BASE_URL}/${size}${path}`;
+  return `${TMDB_IMAGE_BASE_URL}/${size}${path}`
 }

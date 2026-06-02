@@ -1,12 +1,13 @@
-import { configureStore } from "@reduxjs/toolkit";
-import {baseApi} from "@/shared/api/tmdb/baseApi.ts";
-import {setupListeners} from "@reduxjs/toolkit/query";
-import { filtersReducer } from "@/features/filters/model/filtersSlice";
+import { configureStore } from "@reduxjs/toolkit"
+import {baseApi} from "@/shared/api/tmdb/baseApi.ts"
+import {setupListeners} from "@reduxjs/toolkit/query"
+import {filtersReducer} from "@/features/filters/model/filtersSlice.ts"
 import {
   favoritesReducer,
   favoritesSlice,
-} from "@/pages/favorites/model/favoritesSlice";
-import {themeReducer, themeSlice} from "@/app/providers/theme/themeSlice.ts";
+
+} from "@/pages/favorites/model/favoritesSlice.ts"
+import {themeReducer, themeSlice} from "@/app/providers/theme/themeSlice.ts"
 
 export const store = configureStore({
   reducer: {
@@ -16,7 +17,7 @@ export const store = configureStore({
     [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
-});
+})
 
 
 setupListeners(store.dispatch)

@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod"
 
 export const zMovieListItem = z.object({
   id: z.number(),
@@ -7,14 +7,14 @@ export const zMovieListItem = z.object({
   backdrop_path: z.string().nullable().optional(),
   vote_average: z.number().optional().default(0),
   release_date: z.string().optional().default(""),
-});
+})
 
 export const zMoviesListResponse = z.object({
   page: z.number(),
   results: z.array(zMovieListItem),
   total_pages: z.number().optional(),
   total_results: z.number().optional(),
-});
+})
 
 
 export type MoviesListResponse = z.infer<typeof zMoviesListResponse>;
@@ -26,7 +26,7 @@ export const zGenresResponse = z.object({
       name: z.string(),
     })
   ),
-});
+})
 export type GenresResponse = z.infer<typeof zGenresResponse>;
 
 
@@ -74,7 +74,7 @@ export const zMovieDetailsResponse = z.object({
       })
     )
     .optional(),
-});
+})
 
 
 export const zMovieCreditsResponse = z.object({
@@ -87,4 +87,4 @@ export const zMovieCreditsResponse = z.object({
       profile_path: z.string().nullable().optional(),
     })
   ),
-});
+})

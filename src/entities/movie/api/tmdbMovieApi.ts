@@ -2,27 +2,27 @@ import type {
   DiscoverParams, MovieCreditsResponse, MovieDetailsResponse,
   MoviesCategoryParams,
   MoviesListResponse, SearchMoviesParams
-} from "../model/types";
-import {baseApi} from "@/shared/api/tmdb/baseApi.ts";
+} from "../model/types"
+import {baseApi} from "@/shared/api/tmdb/baseApi.ts"
 import {
   type GenresResponse, zGenresResponse,
   zMovieCreditsResponse, zMovieDetailsResponse,
   zMoviesListResponse
-} from "@/shared/api/tmdb/zodSchemas.ts";
+} from "@/shared/api/tmdb/zodSchemas.ts"
 
 
 function clampPage(page?: number) {
-  if (!Number.isFinite(page)) return 1;
-  const int = Math.floor(page as number);
-  if (int < 1) return 1;
-  if (int > 500) return 500;
-  return int;
+  if (!Number.isFinite(page)) return 1
+  const int = Math.floor(page as number)
+  if (int < 1) return 1
+  if (int > 500) return 500
+  return int
 }
 
 export const tmdbMovieApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getCategoryMovies: build.query<MoviesListResponse, { category: Category; params?: MoviesCategoryParams }>({
-      query: ({ category, params }: { category: Category; params: MoviesCategoryParams }) => {
+      query: ({ category, params }) => {
         return {
           method: "get",
           url: `/movie/${category}`,
@@ -75,8 +75,8 @@ export const tmdbMovieApi = baseApi.injectEndpoints({
       infiniteQueryOptions: {
         initialPageParam: 1,
         getNextPageParam: (lastPage) => {
-          const total = lastPage.total_pages ?? lastPage.page;
-          return lastPage.page < total ? lastPage.page + 1 : undefined;
+          const total = lastPage.total_pages ?? lastPage.page
+          return lastPage.page < total ? lastPage.page + 1 : undefined
         },
       },
 
@@ -110,6 +110,6 @@ export const tmdbMovieApi = baseApi.injectEndpoints({
   })
 })
 
-export const { useGetCategoryMoviesQuery, useDiscoverMoviesQuery, useGetGenresQuery, useGetMovieDetailsQuery, useGetSimilarMoviesQuery, useGetMovieCreditsQuery, useGetSearchMoviesInfiniteQuery} = tmdbMovieApi;
+export const { useGetCategoryMoviesQuery, useDiscoverMoviesQuery, useGetGenresQuery, useGetMovieDetailsQuery, useGetSimilarMoviesQuery, useGetMovieCreditsQuery, useGetSearchMoviesInfiniteQuery} = tmdbMovieApi
 
 export type Category = "popular" | "top_rated" | "upcoming" | "now_playing";

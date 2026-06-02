@@ -1,5 +1,5 @@
-import s from "./RatingRange.module.css";
-import type { ChangeEvent } from "react";
+import s from "./RatingRange.module.css"
+import type { ChangeEvent } from "react"
 
 type Props = {
   minRating: number;
@@ -9,19 +9,19 @@ type Props = {
 
 export const RatingRange = ({ minRating, maxRating, onRatingChange }: Props) => {
   const handleMinChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = parseFloat(e.target.value);
-    const clampedValue = Math.min(value, maxRating - 0.1);
-    onRatingChange(clampedValue, maxRating);
-  };
+    const value = parseFloat(e.target.value)
+    const clampedValue = Math.min(value, maxRating - 0.1)
+    onRatingChange(clampedValue, maxRating)
+  }
 
   const handleMaxChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = parseFloat(e.target.value);
-    const clampedValue = Math.max(value, minRating + 0.1);
-    onRatingChange(minRating, clampedValue);
-  };
+    const value = parseFloat(e.target.value)
+    const clampedValue = Math.max(value, minRating + 0.1)
+    onRatingChange(minRating, clampedValue)
+  }
 
-  const minPercent = (minRating / 10) * 100;
-  const maxPercent = (maxRating / 10) * 100;
+  const minPercent = (minRating / 10) * 100
+  const maxPercent = (maxRating / 10) * 100
 
   return (
     <div className={s.container}>
@@ -44,5 +44,5 @@ export const RatingRange = ({ minRating, maxRating, onRatingChange }: Props) => 
         <input type="range" min="0" max="10" step="0.1" value={maxRating} onChange={handleMaxChange} className={s.slider} />
       </div>
     </div>
-  );
-};
+  )
+}

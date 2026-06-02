@@ -1,5 +1,5 @@
-import styles from "./MoviePoster.module.css";
-import {getImageUrl} from "@/entities/movie/lib/imageUrl.ts";
+import styles from "./MoviePoster.module.css"
+import {getImageUrl} from "@/entities/movie/lib/imageUrl.ts"
 
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 export function MoviePoster({ posterPath, title }: Props) {
   const src = posterPath
     ? getImageUrl(posterPath, "w342")
-    : "https://placehold.co/342x513?text=No+Image";
+    : "https://placehold.co/342x513?text=No+Image"
 
   return (
     <img
@@ -19,5 +19,5 @@ export function MoviePoster({ posterPath, title }: Props) {
       alt={title}
       loading="lazy"
     />
-  );
+  )
 }

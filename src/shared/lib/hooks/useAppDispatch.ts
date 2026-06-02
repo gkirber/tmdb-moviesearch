@@ -1,1 +1,4 @@
-export { useAppDispatch } from "@/app/providers/store/hooks";
+import { useDispatch } from "react-redux"
+import type { AppDispatch } from "@/app/providers/store/store"
+
+export const useAppDispatch: () => AppDispatch = useDispatch

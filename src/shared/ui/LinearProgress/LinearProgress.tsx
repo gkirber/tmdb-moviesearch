@@ -1,5 +1,5 @@
-import styles from "./LinearProgress.module.css";
+import styles from "./LinearProgress.module.css"
 
 export function LinearProgress() {
-  return <div className={styles.bar} />;
+  return <div className={styles.bar} />
 }

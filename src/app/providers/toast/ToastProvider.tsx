@@ -1,5 +1,5 @@
-import type { PropsWithChildren } from "react";
-import { ToastContainer } from "react-toastify";
+import type { PropsWithChildren } from "react"
+import { ToastContainer } from "react-toastify"
 
 export function ToastProvider({ children }: PropsWithChildren) {
   return (
@@ -7,5 +7,5 @@ export function ToastProvider({ children }: PropsWithChildren) {
       {children}
       <ToastContainer position="top-right" autoClose={3500} />
     </>
-  );
+  )
 }

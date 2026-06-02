@@ -1,12 +1,21 @@
 .block {
   margin-top: 34px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+:global(:root[data-theme="dark"]) .block {
+  background: #121a2b;
 }
 
 .title {
   margin: 0 0 18px;
   font-size: 26px;
   font-weight: 900;
-  color: #0f172a;
+  color: var(--section-title);
 }
 
 .grid {
@@ -28,9 +37,9 @@
   border-radius: 999px;
   object-fit: cover;
   display: block;
-  background: #f1f5f9;
-  border: 6px solid #fff;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+  background: var(--header-bg);
+  border: 6px solid var(--card-bg);
+  box-shadow: var(--card-shadow);
 }
 
 .info {
@@ -40,22 +49,21 @@
 .name {
   font-size: 16px;
   font-weight: 900;
-  color: #0f172a;
+  color: var(--text);
 }
 
 .role {
   margin-top: 6px;
   font-size: 14px;
-  color: rgba(15, 23, 42, 0.55);
+  color: var(--text-muted);
   font-weight: 600;
 }
 
 .empty {
   padding: 8px 0;
-  color: rgba(15, 23, 42, 0.65);
+  color: var(--text-muted);
 }
 
-/* адаптив */
 @media (max-width: 1200px) {
   .grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));

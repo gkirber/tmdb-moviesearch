@@ -1,8 +1,7 @@
-import { Outlet } from "react-router-dom";
-import styles from "./RootLayout.module.css";
-
-import { Header } from "../../../widgets/header/ui/Header";
-import { Footer } from "../../../widgets/footer/ui/Footer";
+import { Outlet } from "react-router-dom"
+import styles from "./RootLayout.module.css"
+import { Header } from "../../../widgets/header/ui/Header"
+import { Footer } from "../../../widgets/footer/ui/Footer"
 
 export function RootLayout() {
   return (
@@ -13,5 +12,5 @@ export function RootLayout() {
       </main>
       <Footer />
     </div>
-  );
+  )
 }

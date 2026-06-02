@@ -1,4 +1,4 @@
-import styles from "./MoviesSectionSkeleton.module.css";
+import styles from "./MoviesSectionSkeleton.module.css"
 
 type Props = {
   count?: number;
@@ -27,5 +27,5 @@ export function MoviesSectionSkeleton({ count = 4, cardsPerRow = 6 }: Props) {
         </section>
       ))}
     </div>
-  );
+  )
 }

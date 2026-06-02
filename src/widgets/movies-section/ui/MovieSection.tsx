@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router-dom";
-import styles from "./MovieSection.module.css";
-import type { MovieListItem } from "@/entities/movie/model/types.ts";
-import type { Category } from "@/entities/movie/api/tmdbMovieApi.ts";
-import {MovieCard} from "@/entities/movie/ui/MovieCard/MovieCard.tsx";
+import { useNavigate } from "react-router-dom"
+import styles from "./MovieSection.module.css"
+import type { MovieListItem } from "@/entities/movie/model/types.ts"
+import type { Category } from "@/entities/movie/api/tmdbMovieApi.ts"
+import {MovieCard} from "@/entities/movie/ui/MovieCard/MovieCard.tsx"
 
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export function MovieSection({ title, movies, category }: Props) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <section className={styles.section}>
@@ -34,5 +34,5 @@ export function MovieSection({ title, movies, category }: Props) {
         ))}
       </div>
     </section>
-  );
+  )
 }

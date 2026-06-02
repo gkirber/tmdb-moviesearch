@@ -1,6 +1,6 @@
-import s from "./SortSelect.module.css";
-import type { ChangeEvent } from "react";
-import type {SortBy} from "@/entities/movie/model/types.ts";
+import s from "./SortSelect.module.css"
+import type { ChangeEvent } from "react"
+import type {SortBy} from "@/entities/movie/model/types.ts"
 
 
 const sortOptions = [
@@ -12,12 +12,12 @@ const sortOptions = [
   { value: "primary_release_date.desc", label: "Release Date ↓" },
   { value: "original_title.asc", label: "Title A-Z" },
   { value: "original_title.desc", label: "Title Z-A" },
-];
+]
 
 export const SortSelect = ({ value, onChange }: { value: SortBy; onChange: (value: SortBy) => void }) => {
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    onChange(e.target.value as SortBy);
-  };
+    onChange(e.target.value as SortBy)
+  }
 
   return (
     <div className={s["sort-container"]}>
@@ -30,5 +30,5 @@ export const SortSelect = ({ value, onChange }: { value: SortBy; onChange: (valu
         ))}
       </select>
     </div>
-  );
-};
+  )
+}

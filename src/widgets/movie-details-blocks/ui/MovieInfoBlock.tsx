@@ -1,20 +1,20 @@
-import styles from "./MovieInfoBlock.module.css";
-import { getImageUrl } from "@/entities/movie/lib/imageUrl.ts";
-import { RatingBadge } from "@/entities/movie/ui/RatingBadge/RatingBadge.tsx";
-import type {MovieDetailsResponse} from "@/entities/movie/model/types.ts";
+import styles from "./MovieInfoBlock.module.css"
+import { getImageUrl } from "@/entities/movie/lib/imageUrl"
+import { RatingBadge } from "@/entities/movie/ui/RatingBadge/RatingBadge"
+import type {MovieDetailsResponse} from "@/entities/movie/model/types.ts"
 
 
-const POSTER_PLACEHOLDER = "https://placehold.co/500x750?text=No+Poster";
+const POSTER_PLACEHOLDER = "https://placehold.co/500x750?text=No+Poster"
 
 function getYear(date?: string) {
-  return date?.slice(0, 4) ?? "—";
+  return date?.slice(0, 4) ?? "—"
 }
 
 function formatRuntime(runtime?: number | null) {
-  if (!runtime || runtime <= 0) return "—";
-  const h = Math.floor(runtime / 60);
-  const m = runtime % 60;
-  return h > 0 ? `${h}h ${m}m` : `${m}m`;
+  if (!runtime || runtime <= 0) return "—"
+  const hours = Math.floor(runtime / 60)
+  const minutes = runtime % 60
+  return hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`
 }
 
 type Props = {
@@ -23,14 +23,13 @@ type Props = {
 };
 
 export function MovieInfoBlock({ movie, loading }: Props) {
-  const posterUrl = movie?.poster_path ? getImageUrl(movie.poster_path, "w500") : POSTER_PLACEHOLDER;
+  const posterUrl = movie?.poster_path ? getImageUrl(movie.poster_path, "w500") : POSTER_PLACEHOLDER
 
-  const backdropUrl = movie?.backdrop_path ? getImageUrl(movie.backdrop_path, "w1280") : undefined;
+  const backdropUrl = movie?.backdrop_path ? getImageUrl(movie.backdrop_path, "w1280") : undefined
 
   return (
     <section className={styles.hero}>
-      {backdropUrl && <div className={styles.backdrop} style={{ backgroundImage: `url(${backdropUrl})` }} />}
-      <div className={styles.overlay} />
+      {backdropUrl && <div style={{ backgroundImage: `url(${backdropUrl})` }} />}
 
       <div className={styles.content}>
         <img className={styles.poster} src={posterUrl} alt={movie?.title ?? "Poster"} />
@@ -63,5 +62,5 @@ export function MovieInfoBlock({ movie, loading }: Props) {
         </div>
       </div>
     </section>
-  );
+  )
 }

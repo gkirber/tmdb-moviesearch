@@ -1,6 +1,6 @@
-import styles from "./SimilarMoviesBlock.module.css";
-import type { MovieListItem } from "@/entities/movie/model/types.ts";
-import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard.tsx";
+import styles from "./SimilarMoviesBlock.module.css"
+import type { MovieListItem } from "@/entities/movie/model/types"
+import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard"
 
 type Props = {
   movies: MovieListItem[];
@@ -20,5 +20,5 @@ export function SimilarMoviesBlock({ movies, loading }: Props) {
 
       {!loading && movies.length === 0 && <div className={styles.empty}>No similar movies found.</div>}
     </section>
-  );
+  )
 }

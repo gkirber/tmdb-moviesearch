@@ -1,7 +1,7 @@
-import s from "./NotFoundPage.module.css";
-import not from "@/assets/images/notFound.jpg";
-import {NavLink} from "react-router-dom";
-import { routes } from "@/app/providers/router/routes.ts";
+import s from "./NotFoundPage.module.css"
+import not from "@/assets/images/notFound.jpg"
+import {NavLink} from "react-router-dom"
+import {routes} from "@/app/providers/router/routes.ts"
 
 export function NotFoundPage() {
   return (
@@ -12,5 +12,5 @@ export function NotFoundPage() {
         Go to home
       </NavLink>
     </div>
-  );
+  )
 }

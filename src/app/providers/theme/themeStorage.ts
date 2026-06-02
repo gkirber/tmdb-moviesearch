@@ -1,28 +1,28 @@
 export type ThemeMode = "light" | "dark";
 
-const KEY = "theme";
+const KEY = "theme"
 
 export function loadTheme(): ThemeMode {
-  let saved: string | null = null;
+  let saved: string | null = null
   try {
-    saved = localStorage.getItem(KEY);
+    saved = localStorage.getItem(KEY)
   } catch (err) {
-    console.warn("Theme storage unavailable.", err);
+    console.warn("Theme storage unavailable.", err)
   }
 
-  if (saved === "light" || saved === "dark") return saved;
+  if (saved === "light" || saved === "dark") return saved
 
   const prefersDark =
     typeof window !== "undefined" &&
-    window.matchMedia?.("(prefers-color-scheme: dark)")?.matches;
+    window.matchMedia?.("(prefers-color-scheme: dark)")?.matches
 
-  return prefersDark ? "dark" : "light";
+  return prefersDark ? "dark" : "light"
 }
 
 export function saveTheme(theme: ThemeMode) {
   try {
-    localStorage.setItem(KEY, theme);
+    localStorage.setItem(KEY, theme)
   } catch (err) {
-    console.warn("Failed to save theme.", err);
+    console.warn("Failed to save theme.", err)
   }
 }

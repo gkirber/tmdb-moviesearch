@@ -4,13 +4,16 @@
 }
 
 .container {
-  max-width: 1240px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 16px;
 
   display: flex;
   align-items: center;
-  gap: 24px;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -21,7 +24,7 @@
 }
 
 .logoImage {
-  height: 32px;
+  height: 24px;
   width: auto;
   display: block;
 }

@@ -4,5 +4,5 @@ export function isErrorWithProperty<T extends string>(error: unknown, property: 
     error !== null &&
     property in error &&
     typeof (error as Record<string, unknown>)[property] === "string"
-  );
+  )
 }

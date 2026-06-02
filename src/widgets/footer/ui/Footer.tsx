@@ -1,4 +1,4 @@
-import styles from "./Footer.module.css";
+import styles from "./Footer.module.css"
 
 export function Footer() {
   return (
@@ -7,5 +7,5 @@ export function Footer() {
         <span >© 2026 MovieSearch Demo · Data courtesy of TMDB.</span>
       </div>
     </footer>
-  );
+  )
 }

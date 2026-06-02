@@ -1,4 +1,4 @@
-import styles from "./MovieDetailsSkeleton.module.css";
+import styles from "./MovieDetailsSkeleton.module.css"
 
 export function MovieDetailsSkeleton() {
   return (
@@ -49,5 +49,5 @@ export function MovieDetailsSkeleton() {
         </div>
       </section>
     </div>
-  );
+  )
 }

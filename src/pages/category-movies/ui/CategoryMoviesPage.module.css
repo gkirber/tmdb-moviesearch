@@ -1,104 +1,105 @@
 .page {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 16px;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 16px;
 }
 
 .tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: center;
 }
 
 .tab {
-  border: 1px solid rgba(0,0,0,0.15);
-  padding: 8px 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 600;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	padding: 8px 12px;
+	border-radius: 10px;
+	cursor: pointer;
+	font-weight: 600;
 
-  background: var(--tab-bg);
-  color: var(--tab-text);
-
+	background: var(--tab-bg);
+	color: var(--tab-text);
 }
 
 .tab:hover {
-  background: var(--tab-hover-bg);
+	background: var(--tab-hover-bg);
 }
 
 .active {
-  background: var(--tab-active-bg);
-  color: var(--tab-active-text);
+	background: var(--tab-active-bg);
+	color: var(--tab-active-text);
 }
 
 .title {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 800;
+	margin: 0;
+	font-size: 22px;
+	font-weight: 800;
 }
 
 .loadingBar {
-  width: 100%;
+	width: 100%;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 16px;
-  width: 100%;
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+	gap: 16px;
+	width: 100%;
 }
 
 .skeletonCard {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 
 .skeletonPoster {
-  width: 100%;
-  height: 340px;
-  border-radius: 18px;
+	width: 100%;
+	height: 340px;
+	border-radius: 18px;
 }
 
 @media (max-width: 1280px) {
-  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+	.grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
 }
 
 @media (max-width: 860px) {
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
 
-  .skeletonPoster {
-    height: 300px;
-  }
+	.skeletonPoster {
+		height: 300px;
+	}
 }
 
 .pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  padding: 18px 0 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 14px;
+	padding: 18px 0 28px;
 }
 
 .pageBtn {
-  /*border: 1px solid rgba(0,0,0,0.15);*/
-  /*background: transparent;*/
-  padding: 8px 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  color: var(--btn-text);
+	padding: 8px 12px;
+	border-radius: 10px;
+	cursor: pointer;
+	color: var(--btn-text);
 
-  border: var(--btn-border);;
-  background: var(--btn-bg);;
+	border: var(--btn-border);
+	background: var(--btn-bg);
 }
 
 .pageBtn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+	opacity: 0.5;
+	cursor: not-allowed;
 }
 
 .pageInfo {
-  opacity: 0.8;
+	opacity: 0.8;
 }
